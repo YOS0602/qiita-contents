@@ -1,0 +1,24 @@
+{
+  "name": "qiita-contents",
+  "version": "1.0.0",
+  "description": "Manage Qiita contents of YOS0602",
+  "scripts": {
+    "new": "qiita new",
+    "publish": "qiita publish",
+    "preview": "qiita preview",
+    "login": "qiita login"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOS0602/advent-of-code"
+  },
+  "keywords": [],
+  "author": "YOS0602 <yoshitaka.t.biz@gmail.com> (https://github.com/YOS0602)",
+  "license": "UNLICENSED",
+  "volta": {
+    "node": "20.11.0"
+  },
+  "devDependencies": {
+    "@qiita/qiita-cli": "^1.4.0"
+  }
+}
