@@ -5,7 +5,7 @@ tags:
   - npm
   - TypeScript
 private: false
-updated_at: '2022-11-23T17:50:08+09:00'
+updated_at: '2024-01-31T13:40:59+09:00'
 id: e2cda3272a50184d9184
 organization_url_name: null
 slide: false

@@ -6,11 +6,12 @@
     "new": "qiita new",
     "publish": "qiita publish",
     "preview": "qiita preview",
+    "pull": "qiita pull",
     "login": "qiita login"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOS0602/advent-of-code"
+    "url": "https://github.com/YOS0602/qiita-contents"
   },
   "keywords": [],
   "author": "YOS0602 <yoshitaka.t.biz@gmail.com> (https://github.com/YOS0602)",

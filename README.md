@@ -10,6 +10,30 @@ See official [README](https://github.com/increments/qiita-cli?tab=readme-ov-file
 
 ## 新しい記事を作成するとき
 
+```bash
+npm run new <Title>
+```
+
+## Preview するとき
+
+```bash
+npm run preview
+```
+
 ## 記事を投稿するとき
 
+```bash
+npm run publish <Title>
+```
+
+全ての記事を反映する。
+
+```bash
+npm run publish --all
+```
+
 ## Qiitaから記事を取り込むとき
+
+```bash
+npm run pull
+```
