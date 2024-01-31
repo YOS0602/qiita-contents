@@ -25,8 +25,10 @@ ignorePublish: false
 
 - 時計と一緒に表示→ON
 - ホットコーナー
-    - 右上:　画面をロック
-    - 右下: クイックメモ
+  - 左上: Mission Control
+  - 左下: アプリケーションウィンドウ
+  - 右上: なし
+  - 右下: 画面をロック
 
 ### Dockとメニューバー
 
@@ -49,7 +51,7 @@ ignorePublish: false
 ### サウンド
 
 - 通知音
-    - Pebble
+  - Pebble
 - 起動時にサウンドを再生→OFF
 
 ### キーボード
@@ -91,7 +93,7 @@ ignorePublish: false
 
 # Homebrew
 
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+[macOS（またはLinux）用パッケージマネージャー — Homebrew](https://brew.sh/ja/)
 
 ## pathを通す
 
@@ -123,14 +125,6 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 - [drawio](https://www.diagrams.net/)
     - `brew install --cask drawio`
     - アーキ図とか描くやつ
-- [plantuml](https://plantuml.com/ja/)
-    - `brew install plantuml`
-    - `brew install graphviz` クラス図を書くならこっちも
-    - [openjdk — Homebrew Formulae](https://formulae.brew.sh/formula/openjdk)より、pathを通すためにシンボリックリンクを貼る必要がある
-
-        ```
-        sudo ln -sfn $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-        ```
 - [dbeaver-community](https://dbeaver.io/)
     - `brew install --cask dbeaver-community`
     - DBクライアント
@@ -157,14 +151,13 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
     brew tap azure/functions
     brew install azure-functions-core-tools@4
     ```
-- [VMware Horizon Client](https://www.vmware.com/jp.html)
-    - `brew install --cask vmware-horizon-client`
 - [VS Code](https://code.visualstudio.com/)
     - `brew install --cask visual-studio-code`
 - [Microsoft Azure CLI](https://docs.microsoft.com/ja-jp/cli/azure/)
     - `brew install azure-cli`
 - [Amazon AWS command-line interface](https://aws.amazon.com/cli/)
     - `brew install awscli`
+- [gcloud CLI](https://cloud.google.com/sdk/docs/install?hl=ja)
 - [git](https://git-scm.com/)
     - `brew install git`
     - pathを通す
@@ -179,10 +172,10 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
     mkdir go
     export GOPATH=/Users/[username]/go
     ```
-- [.NET](https://dotnet.microsoft.com/ja-jp/download)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
     - `brew install --cask docker`
 - [Rancher Desktop](https://rancherdesktop.io/)
+- [Notion](https://www.notion.so/ja-jp/desktop)
 
 # アプリケーション
 
@@ -209,19 +202,22 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 	bdd = branch -D
 	cm = commit
 	df = diff
+	wd = diff --word-diff
 	gr = grep
 	f = fetch -p
 	p = pull
+    pu = push
 	cp = cherry-pick -n
 	cpc = cherry-pick
-    pu = push
 	ns = log --name-status
-	wd = diff --word-diff
+    lo = log --oneline
 	# すっきりしたコミットログ
 	loggr = log --graph --date=short --decorate=short --abbrev-commit --all --pretty=format:'%C(yellow)%H %C(reset)%cd %C(cyan)%cn %C(red)%d %C(reset)%s'
 	# 上記に変更ファイルを足したもの
 	loggrf = log --graph --date=short --decorate=short --name-status --abbrev-commit --all --pretty=format:'%C(yellow)%H %C(reset)%cd %C(cyan)%cn %C(red)%d %C(reset)%s'
     # いい感じのグラフでログを表示
+    graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+    # 上の省略形
     gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 [user]
 	name = XXX
@@ -231,4 +227,6 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 	ignorecase = false
 [init]
 	defaultBranch = main
+[pull]
+    rebase = false
 ```
