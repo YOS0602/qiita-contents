@@ -10,6 +10,7 @@ organization_url_name: null
 slide: false
 ignorePublish: false
 ---
+
 # はじめに
 
 開発端末としてMacを新しくした時に、色々とやることをメモしておく。全て自分のため。
@@ -102,23 +103,11 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 ## インストールパッケージ
 
 - [Google Chrome](https://www.google.com/chrome/)
-    - `brew install --cask google-chrome`
-- [Maccy](https://maccy.app/)
-    - `brew install --cask maccy`
-    - 複数のクリップボード履歴を保持する
-    - 設定メモ
-        - ショートカット: Shift + Command + V
-        - ログイン時に実行
-        - 自動的にアップデートを確認
-        - 自動的に貼り付け
-        - 保管サイズ: 20
-- [Spectacle](https://www.spectacleapp.com/)
-    - `brew install --cask spectacle`
-    - Windowsっぽくウィンドウをリサイズする
-    - デフォルト
-        - <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/9b14ae71-98e9-3ed8-163a-f6082ba0411f.png" width="530">
-    - 設定
-        - <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/e8d959fa-edb6-4a01-8d76-0c6e651097f3.png" width="530">
+  - `brew install --cask google-chrome`
+- [Clipy](https://github.com/Clipy/Clipy)
+  - Clipboard extension app for macOS.
+- [Rectangle](https://rectangleapp.com/)
+  - Move and resize windows in macOS
 - [AltTab](https://alt-tab-macos.netlify.app/)
     - `brew install --cask alt-tab`
     - windows風にウィンドウを切り替えられる
@@ -147,7 +136,7 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 - [azure-data-studio](https://docs.microsoft.com/ja-jp/sql/azure-data-studio/?view=sql-server-ver16)
     - `brew install --cask azure-data-studio`
 - [Azure Functions Core Tools](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-run-local?tabs=v4%2Cmacos%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
-    ```
+    ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools@4
     ```
@@ -164,16 +153,6 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
         - [【MacOS】Homebrew経由でGitをインストールする方法 - シェルにHomebrew経由のGitパスを通す](https://blog.cloud-acct.com/posts/u-homebrew-git-install/#%E7%8F%BE%E7%8A%B6%E3%82%92%E6%95%B4%E7%90%86%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86)
 - [slack](https://slack.com/intl/ja-jp/)
     - `brew install --cask slack`
-- [Go](https://go.dev/)
-    - `brew install go`
-    ```terminal
-    # 環境変数の設定
-    cd $HOME
-    mkdir go
-    export GOPATH=/Users/[username]/go
-    ```
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
-    - `brew install --cask docker`
 - [Rancher Desktop](https://rancherdesktop.io/)
 - [Notion](https://www.notion.so/ja-jp/desktop)
 
