@@ -4,7 +4,7 @@ tags:
   - Mac
   - homebrew
 private: false
-updated_at: '2024-01-31T16:37:16+09:00'
+updated_at: '2024-02-03T17:05:03+09:00'
 id: d723e3f35b7a738ef97e
 organization_url_name: null
 slide: false
