@@ -159,7 +159,7 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 # アプリケーション
 
 - [Logicool Options](https://www.logicool.co.jp/ja-jp/software/options.html)
-    - Logicool製品のカスタマイズ
+  - Logicool製品のカスタマイズ
 - Kindle
 - kobo
 - [DaVinci Resolve](https://www.blackmagicdesign.com/jp/products/davinciresolve)
@@ -172,40 +172,75 @@ https://qiita.com/howaito01/items/242ba23e8a8fb00dac05
 
 ```~/.gitconfig
 [alias]
-	st = status
-	co = checkout
+    st = status
+    co = checkout
     cob = checkout -b
-	b = branch
-	ba = branch -a
-	bd = branch -d
-	bdd = branch -D
-	cm = commit
-	df = diff
-	wd = diff --word-diff
-	gr = grep
-	f = fetch -p
-	p = pull
+    b = branch
+    ba = branch -a
+    bd = branch -d
+    bdd = branch -D
+    cm = commit
+    df = diff
+    wd = diff --word-diff
+    gr = grep
+    f = fetch -p
+    p = pull
     pu = push
-	cp = cherry-pick -n
-	cpc = cherry-pick
-	ns = log --name-status
+    cp = cherry-pick -n
+    cpc = cherry-pick
+    ns = log --name-status
     lo = log --oneline
-	# すっきりしたコミットログ
-	loggr = log --graph --date=short --decorate=short --abbrev-commit --all --pretty=format:'%C(yellow)%H %C(reset)%cd %C(cyan)%cn %C(red)%d %C(reset)%s'
-	# 上記に変更ファイルを足したもの
-	loggrf = log --graph --date=short --decorate=short --name-status --abbrev-commit --all --pretty=format:'%C(yellow)%H %C(reset)%cd %C(cyan)%cn %C(red)%d %C(reset)%s'
+    # すっきりしたコミットログ
+    loggr = log --graph --date=short --decorate=short --abbrev-commit --all --pretty=format:'%C(yellow)%H %C(reset)%cd %C(cyan)%cn %C(red)%d %C(reset)%s'
+    # 上記に変更ファイルを足したもの
+    loggrf = log --graph --date=short --decorate=short --name-status --abbrev-commit --all --pretty=format:'%C(yellow)%H %C(reset)%cd %C(cyan)%cn %C(red)%d %C(reset)%s'
     # いい感じのグラフでログを表示
     graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
     # 上の省略形
     gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 [user]
-	name = XXX
-	email = XXX@hoge.com
+    name = XXX
+    email = XXX@hoge.com
 [core]
-	excludesfile = /Users/user/.gitignore_global
-	ignorecase = false
+    excludesfile = /Users/user/.gitignore_global
+    ignorecase = false
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [pull]
     rebase = false
+```
+
+# Cursor (VSCode) 拡張機能
+
+`cursor` 部分を `code` に置換すれば、VSCodeに拡張機能をinstallできる。
+
+```sh
+cursor --install-extension davidanson.vscode-markdownlint         # markdownlint
+cursor --install-extension yzhang.markdown-all-in-one             # Markdown All in One
+cursor --install-extension bierner.markdown-preview-github-styles # Markdown Preview Github Styling
+cursor --install-extension vscode-icons-team.vscode-icons         # vscode-icons
+cursor --install-extension esbenp.prettier-vscode                 # Prettier - Code formatter
+cursor --install-extension inferrinizzard.prettier-sql-vscode     # Prettier SQL VSCode
+cursor --install-extension streetsidesoftware.code-spell-checker  # Code Spell Checker
+cursor --install-extension ExodiusStudios.comment-anchors         # Comment Anchors
+cursor --install-extension ms-vscode-remote.remote-containers     # Dev Containers
+cursor --install-extension ms-azuretools.vscode-docker            # Docker
+cursor --install-extension mechatroner.rainbow-csv                # Rainbow CSV
+cursor --install-extension janisdd.vscode-edit-csv                # Edit csv
+cursor --install-extension dsznajder.es7-react-js-snippets        # ES7+ React/Redux/React-Native snippets
+cursor --install-extension dbaeumer.vscode-eslint                 # ESLint
+cursor --install-extension GitHub.github-vscode-theme             # GitHub Theme
+cursor --install-extension HashiCorp.terraform                    # HashiCorp Terraform
+cursor --install-extension ecmel.vscode-html-css                  # HTML CSS Support
+cursor --install-extension oderwat.indent-rainbow                 # indent-rainbow
+cursor --install-extension christian-kohler.path-intellisense     # Path Intellisense
+cursor --install-extension VisualStudioExptTeam.vscodeintellicode # IntelliCode
+cursor --install-extension andys8.jest-snippets                   # Jest Snippets
+cursor --install-extension firsttris.vscode-jest-runner           # Jest Runner
+cursor --install-extension MS-vsliveshare.vsliveshare             # Live Share
+cursor --install-extension redhat.vscode-yaml                     # YAML
+cursor --install-extension bradlc.vscode-tailwindcss              # Tailwind CSS IntelliSense
+cursor --install-extension foxundermoon.shell-format              # shell-format
+cursor --install-extension eamodio.gitlens                        # GitLens
+cursor --install-extension GraphQL.vscode-graphql-syntax          # GraphQL: Syntax Highlighting
 ```
