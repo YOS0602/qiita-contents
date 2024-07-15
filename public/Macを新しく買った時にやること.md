@@ -10,7 +10,6 @@ organization_url_name: null
 slide: false
 ignorePublish: false
 ---
-
 # はじめに
 
 開発端末としてMacを新しくした時に、色々とやることをメモしておく。全て自分のため。
@@ -243,4 +242,7 @@ cursor --install-extension bradlc.vscode-tailwindcss              # Tailwind CSS
 cursor --install-extension foxundermoon.shell-format              # shell-format
 cursor --install-extension eamodio.gitlens                        # GitLens
 cursor --install-extension GraphQL.vscode-graphql-syntax          # GraphQL: Syntax Highlighting
+cursor --install-extension tomoki1207.pdf                         # vscode-pdf
+cursor --install-extension GitHub.vscode-pull-request-github      # GitHub Pull Requests
+cursor --install-extension foxundermoon.shell-format              # shell-format
 ```
