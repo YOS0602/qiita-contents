@@ -5,7 +5,7 @@ title: >-
 tags:
   - GoogleCloud
 private: false
-updated_at: '2024-01-11T16:12:44+09:00'
+updated_at: '2024-07-15T16:21:24+09:00'
 id: a057aaf950987223e7cc
 organization_url_name: null
 slide: false
