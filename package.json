@@ -20,6 +20,6 @@
     "node": "20.11.0"
   },
   "devDependencies": {
-    "@qiita/qiita-cli": "^1.4.2"
+    "@qiita/qiita-cli": "^1.5.0"
   }
 }
