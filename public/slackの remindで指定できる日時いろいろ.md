@@ -3,7 +3,7 @@ title: slackの/remindで指定できる日時いろいろ
 tags:
   - Slack
 private: false
-updated_at: '2024-01-25T13:16:17+09:00'
+updated_at: '2024-09-08T13:42:54+09:00'
 id: e52594d4faa6848800cb
 organization_url_name: null
 slide: false
@@ -11,13 +11,14 @@ ignorePublish: false
 ---
 # はじめに
 
-[slackのリマインダー](https://slack.com/intl/ja-jp/help/articles/208423427-%E3%83%AA%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%80%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B)使っていますか？
-確認しなきゃいけないメッセージが来てるけど、今は手が離せないから未読のまま放置しよう......！ なんてLINEかメールみたいなことまさかやってないですよね？
+[slackのリマインダー](https://slack.com/intl/ja-jp/help/articles/208423427-%E3%83%AA%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%80%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B)をご存知でしょうか？
+確認しなきゃいけないメッセージが来てるけど、今は手が離せないから未読のまま放置しよう......！ みたいなことをせずに済むようになるかもしれません。
 
 ## `/remind`とは
 
 - GUIから設定できる「後でリマインドする」を、好きなメッセージ、好きなタイミングで指定できるコマンド
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/fdd67803-b275-bb50-f1f5-a4f8ba271061.png)
+
 - 使い方はこんな感じ
     ```text
     /remind me
@@ -33,7 +34,7 @@ ignorePublish: false
 
 ### いつリマインドするかの指定
 
-whatはメッセージなんでなんでもいいんですけど、whenは今の所(2022/09/29)英語じゃないと認識してくれません。
+whatはメッセージ部分になるので何でも書けるのですが、whenは今の所(2024/09/08)英語じゃないと認識してくれません。
 
 ```text
 /remind me
