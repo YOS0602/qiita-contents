@@ -12,12 +12,12 @@ ignorePublish: false
 ---
 # はじめに
 
-コードだけさっさと知りたい方は[TypeScriptでの実装](#typescriptでの実装)までジャンプしてください
+コードだけ知れればOKという方は、[TypeScriptでの実装](#typescriptでの実装)までジャンプしてください！
 
 ## 経緯
 
-以下にあるように、C#やJava, Pythonには当たり前のように組み込まれている`String.format()`はTypeScriptには存在しない(らしい)
-[テンプレートリテラル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals)と呼ばれるものを使えば似たようなことはできるが、ログ出力なんかを考えると、`format()`みたいなのが使いたい時があるんですよね
+以下にあるように、C#やJava, Pythonには当たり前のように組み込まれている `String.format()` はTypeScriptには存在しない(らしい)
+[テンプレートリテラル](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Template_literals)と呼ばれるものを使えば似たようなことはできるらしいですが、ログ出力なんかを考えると `format()` みたいなのが使いたい時があるんですよね。
 
 ```js
 const name = 'taro', age = 21
@@ -27,7 +27,7 @@ console.log(`name: ${name}, age: ${age}`)
 
 https://qiita.com/yanchi4425/items/e24769f1ede8a983dca0
 
-上記記事だと`String`クラスの`prototype`拡張としてメソッドを定義しているので、共通利用関数として使用できるように作ってみた
+上記記事だと`String`クラスの`prototype`拡張としてメソッドを定義しているので、共通利用関数として使用できるように作ってみました。
 
 ## C#の例
 
@@ -104,7 +104,7 @@ const format = (str, ...args) => {
 
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/dfde10e5-36ee-2b44-0a36-605cb98b3179.png)
 
-ChromeのConsoleタブで動かしてみた
+↑ChromeのConsoleタブで動かしてみた
 
 # 簡単な使い方
 
@@ -125,7 +125,6 @@ format('{0}とは、{1}までに身に付けた{2}の{3}である。', '常識',
 # `jest`でのテストコード
 
 こちらから仕様を読み取ってもらえたら嬉しいです
-`it.each`でやればよかった......
 
 ```format.spec.ts
 it('format', () => {
