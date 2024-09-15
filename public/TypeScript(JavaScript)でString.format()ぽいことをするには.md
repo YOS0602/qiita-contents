@@ -4,7 +4,7 @@ tags:
   - JavaScript
   - TypeScript
 private: false
-updated_at: '2023-01-01T17:30:13+09:00'
+updated_at: '2024-09-16T00:50:36+09:00'
 id: 8eadf8f7743ebdc5946c
 organization_url_name: null
 slide: false
