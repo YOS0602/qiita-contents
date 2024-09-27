@@ -4,7 +4,7 @@ tags:
   - Mac
   - homebrew
 private: false
-updated_at: '2024-07-15T16:20:22+09:00'
+updated_at: '2024-09-22T00:08:03+09:00'
 id: d723e3f35b7a738ef97e
 organization_url_name: null
 slide: false
@@ -56,13 +56,19 @@ ignorePublish: false
 
 ### キーボード
 
+#### キーボード（キーボードショートカット）
+
+- 次のウィンドウを操作対象にする → `opt + tab`
+
+#### ファンクションキー（キーボードショートカット）
+
 - F1、F2などのキーを標準のファンクションキーとして使用→ON
 
-#### 修飾キー
+#### 修飾キー（キーボードショートカット）
 
 - Caps Lock→Commandキー
 
-#### 入力ソース
+#### テキスト入力>入力ソース
 
 - 候補表示: ヒラギノ角ゴシック W3
 - 数字を全角入力→OFF
