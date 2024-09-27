@@ -1,14 +1,14 @@
 ---
 title: Next.js (Pages Router) で react-pdf を動かしてみた
 tags:
-  - 'Next.js'
-  - 'react-pdf' 
-  - 'PDF'
-  - 'React'
-  - '検証'
+  - PDF
+  - 検証
+  - React
+  - Next.js
+  - react-pdf
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-09-27T23:40:56+09:00'
+id: 20ccf9473157da50f9b0
 organization_url_name: null
 slide: false
 ignorePublish: false
