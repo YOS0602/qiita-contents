@@ -31,6 +31,8 @@ https://github.com/YOS0602/react-pdf-with-next-pages-router
 
 | Name | Version |
 | --- | --- |
+| M2 MacBook Air 2022 | 14.6.1 |
+| Google Chrome | 129.0.6668.70 |
 | Node.js | 20.11.0 |
 | npm | 10.2.4 |
 | @react-pdf/renderer | 4.0.0 |
