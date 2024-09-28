@@ -7,7 +7,7 @@ tags:
   - Next.js
   - react-pdf
 private: false
-updated_at: '2024-09-28T11:52:10+09:00'
+updated_at: '2024-09-28T12:23:56+09:00'
 id: 20ccf9473157da50f9b0
 organization_url_name: null
 slide: false
