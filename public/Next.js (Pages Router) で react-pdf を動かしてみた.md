@@ -233,7 +233,7 @@ Fontを登録してあげないと、日本語文字が文字化けする可能�
 
 ## Client Side でPDFをレンダリング
 
-`src/pages/client/index.tsx` 
+`src/pages/client/index.tsx`
 
 ```tsx
 "use client";
