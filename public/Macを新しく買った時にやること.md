@@ -4,7 +4,7 @@ tags:
   - Mac
   - homebrew
 private: false
-updated_at: '2024-09-22T00:08:03+09:00'
+updated_at: '2024-10-01T15:13:45+09:00'
 id: d723e3f35b7a738ef97e
 organization_url_name: null
 slide: false
@@ -252,3 +252,7 @@ cursor --install-extension tomoki1207.pdf                         # vscode-pdf
 cursor --install-extension GitHub.vscode-pull-request-github      # GitHub Pull Requests
 cursor --install-extension foxundermoon.shell-format              # shell-format
 ```
+
+# zsh設定
+
+https://zenn.dev/sprout2000/articles/bd1fac2f3f83bc#3.-zsh-autosuggestions-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
