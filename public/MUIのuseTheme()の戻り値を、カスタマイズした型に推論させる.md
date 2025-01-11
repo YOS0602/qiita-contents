@@ -1,12 +1,12 @@
 ---
 title: MUIのuseTheme()の戻り値を、カスタマイズした型に推論させる
 tags:
-  - MUI
-  - material-ui
   - interface
+  - material-ui
+  - MUI
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-01-11T14:15:02+09:00'
+id: 53f60f313120c91f5235
 organization_url_name: null
 slide: false
 ignorePublish: false
