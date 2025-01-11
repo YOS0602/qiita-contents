@@ -14,15 +14,17 @@ ignorePublish: false
 # はじめに
 
 MUIでは [Theme provider](https://mui.com/material-ui/customization/theming/#theme-provider) を利用して、MUIから提供されている[デフォルトのtheme object](https://mui.com/material-ui/customization/default-theme/)をカスタマイズすることができます。
-しかし、 `useTheme()` でtheme objectを取得しても、カラーコードなどの具体的な設定値が型推論されない状態でした。
-この記事では、useTheme()の戻り値をカスタマイズした型に推論させる方法を紹介します。
+しかし、型推論では、カラーコードなど具体的な設定値が取得されません。この記事では、`useTheme()` の戻り値をカスタマイズした型に推論させる方法を紹介します。
 
 :::note info
-theme object にオリジナルのプロパティを追加したい場合、[モジュール拡張 (module augmentation)](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)を行う必要があります。以下の公式ドキュメントを参考にしてください。
+theme object にオリジナルのプロパティを追加したい場合、[モジュール拡張 (module augmentation)](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)を行う必要があります。
+詳細は以下の公式ドキュメントをご確認ください。  
 https://mui.com/material-ui/customization/theming/#typescript
 :::
 
 # コード例
+
+以下は、`useTheme()` の型をカスタマイズするコード例です。
 
 ```typescript
 import { createTheme, type Theme } from "@mui/material/styles";
@@ -49,14 +51,14 @@ const themeOptions = {
 export const theme = createTheme(themeOptions);
 
 /**
- * オリジナル定義したthemeのリテラルが参照できる型エイリアス
+ * カスタマイズされた theme のリテラルを含む型
  */
 type CustomizedTheme = typeof themeOptions & Theme;
 
 // モジュール拡張
 declare module "@mui/material/styles" {
   /**
-   * `useTheme` のジェネリクスのデフォルト型を上書きしている。
+   * `useTheme` のジェネリクス型を上書きする。
    * @example
    * ```ts
    * import { useTheme } from "@mui/material/styles";
@@ -68,11 +70,19 @@ declare module "@mui/material/styles" {
 }
 ```
 
-`const theme = useTheme();` から参照する値の型が、`themeOptions` で定義したカラーコードに推論されています。
+## 補足
+
+- `themeOptions` はカスタマイズされたオプションを保持するオブジェクトであり、その型情報がリテラル型として保持されます。
+- `CustomizedTheme` により、MUIの `Theme` 型と `themeOptions` のリテラル型を結合します。
+- `useTheme` を上書きすることで、`themeOptions` の型が推論されるようになります。
+
+## 型推論の動作確認
+
+`const theme = useTheme();` を利用すると、`themeOptions` で定義したカラーコードなどが型推論されることを確認できます。
 
 ![カラーコードが型推論されている画像.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/9f95d4d0-8f9d-876a-5e2e-551eb3c197db.png)
 
-[ThemeProviderコンポーネント](https://mui.com/material-ui/customization/theming/#themeprovider)で正しくthemeを設定しておけば、描画内容にも反映されます。
+また、[ThemeProviderコンポーネント](https://mui.com/material-ui/customization/theming/#themeprovider)で正しく設定したthemeを渡すことで、UI描画にも正しく反映されます。
 
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/03d9feba-c789-555b-d64c-5fb7826f78d6.png)
 
