@@ -1,6 +1,6 @@
 ---
 title: >-
-  ReactRouterFramework v7 (spaモード) + @mui v6な環境で、ビルド時に発生する"Directory import ... is not
+  ReactRouterFramework v7 + MUI v6な環境で、ビルド時に発生する"Directory import ... is not
   supported resolving ES modules imported from..."エラーに対処する
 tags:
   - 'react-router'
@@ -20,8 +20,11 @@ ignorePublish: false
 
 # はじめに
 
-[SSR機能を無効化](https://reactrouter.com/how-to/spa)した [React Router Framework v7](https://reactrouter.com/7.1.1/home) と [Material UI v6](https://mui.com/material-ui/getting-started/) を組み合わせたアプリケーションを開発しています。
-`react-router dev` で開発サーバーは問題なく起動できるのに、 `react-router build` で下記エラーが発生する状況でした。解決するために実施したことと、エラー原因について調査したことをメモしておきます。
+[SSR機能を無効化](https://reactrouter.com/how-to/spa)した [React Router Framework v7](https://reactrouter.com/7.1.1/home) プロジェクトで [Material UI v6 (MUI)](https://mui.com/material-ui/getting-started/) を導入した際に発生したエラーについて、その原因と解決方法をメモしています。
+
+## 問題の概要
+
+`react-router dev` で開発サーバーは問題なく起動できるのに、 `react-router build` で下記エラーが発生する状況でした。
 
 ```txt
 ...
@@ -48,9 +51,9 @@ Did you mean to import "@mui/utils/formatMuiErrorMessage/index.js"?
 }
 ```
 
-## SSRを有効化している場合のエラー内容
+### SSRを有効化している場合のエラー内容
 
-ちなみにSSRを有効化している場合は、ビルドが成功する代わりに開発サーバーの起動に失敗します。
+ちなみにSSRを有効化している場合は、ビルドが成功する代わりに開発サーバーの起動に失敗する状態でした。
 
 `Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.`
 
@@ -84,22 +87,22 @@ $ npx envinfo --system --binaries \
 
 # 対処法
 
-`vite.config.ts` の `ssr.noExternal` に `["@mui/*"]` を追加する。
+`vite.config.ts` の `ssr.noExternal` に `["@mui/*"]` を追加します。
 
 ```diff_typescript
-// vite.config.ts
-export default defineConfig({
-  plugins: [reactRouter(), tsconfigPaths()],
-  server: {
-    open: true,
-  },
-  ssr: {
-+   noExternal: [
-+     "@mui/*",
-+   ],
-  },
-});
+ // vite.config.ts
+ export default defineConfig({
+   plugins: [reactRouter(), tsconfigPaths()],
+   server: {
+     open: true,
+   },
++  ssr: {
++    noExternal: ["@mui/*"],
++  },
+ });
 ```
+
+この設定により、ViteはMUI関連のモジュールを外部モジュールとして扱わず、プロジェクト内でバンドルするようになります。
 
 :::note info
 少しでもHMRを高速化させたいなど、wildcardを使いたくない場合は、以下のように `@mui` 配下のpackage-nameを個別指定できます。
@@ -116,21 +119,21 @@ export default defineConfig({
 ```
 :::
 
-エラーは解決しましたが、せっかくですので対処法についてもう少し詳しく見ていきます。
-まずはエラー原因について推察し、 `ssr.noExternal` の指定による挙動の変化を見てみようと思います。
+エラーは解決しましたが、せっかくなので対処法について少し深掘りしてみましょう。
+まずはエラー原因について推察し、 `ssr.noExternal` の指定による挙動の変化を見てみます。
 
 ## エラーが起きていた原因
 
 :::note warn
-筆者はESMやCJSといった[JavaScript モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)に精通しているわけではありません。
-誤解を含む場合がありますのでご注意ください。
+筆者はESMやCJSといった[JavaScript モジュール](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)に詳しいわけではありません。  
+内容に誤解が含まれる可能性がある点をご承知おきください。
 :::
 
-エラーメッセージをもう一度見てみましょう。
+エラーメッセージをもう一度確認してみましょう。
 `not supported resolving ES modules imported`
-この部分を読んだ感じ、どうやらESM形式のimport文の仕様を満たせていなさそうです。
+このメッセージから、どうやらESM形式の`import`文の仕様を満たせていない可能性が高いと考えられます。
 
-エラーが発生している `node_modules/@mui/material/styles/index.js` ( `@mui/material@6.3.1` )ファイルを見てみると......
+エラーが発生している `node_modules/@mui/material/styles/index.js` (`@mui/material@6.3.1`) ファイルを確認すると以下のようなコードが含まれています。
 
 ```javascript
 // node_modules/@mui/material/styles/index.js を一部抜粋
@@ -139,18 +142,17 @@ export { default as THEME_ID } from "./identifier.js";
 ...
 ```
 
-`"@mui/utils/formatMuiErrorMessage"` の部分で拡張子を省略したimport文が書かれていますね。
-しかし、ESMの仕様ではimport文のmodule名は拡張子を省略せず記載することになっています。
+`"@mui/utils/formatMuiErrorMessage"` の部分で拡張子が省略されています。しかし、ESMの仕様では `import` 文で拡張子を省略しないことが求められています。
 （TypeScriptでimport文を書く時は拡張子を省略するのが一般的ですが、TypeScriptコンパイラやバンドラがtsconfigなどの設定に沿ってよしなにやってくれてる認識です。これ以上は難しくて分かりません。）
 
 >モジュールを含む .js ファイルへの相対または絶対 URL となっています。Node では、拡張子なしのインポートは node_modules におけるパッケージへの参照であることが多いです。バンドラーによっては、拡張子を省略してもよいことにしています。環境を確認してください。
 >
 >https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/import#構文 より引用
 
+エラーメッセージには次のような修正案が記載されています。
 `Did you mean to import "@mui/utils/formatMuiErrorMessage/index.js"?`
-エラーメッセージ内で上記のように示唆してくれている通り、拡張子付きのファイル名まで記述すればこの問題は起きなさそうだと分かります。
-しかし、エラーが発生しているのはmuiパッケージ内のコードであるため、自分ではコントロールできません。
-そこで、 `ssr.noExternal` オプションを利用しビルド時のバンドル設定を変更することで対処したのだと認識しています。
+
+つまり、拡張子付きで指定すれば問題は発生しないようです。しかし、このコードはMUIライブラリ内のものであり、開発者が直接修正することはできません。そのため、`ssr.noExternal` オプションを使用し、Viteによるバンドル設定を変更することで対処しました。
 
 ## `ssr.noExternal` の指定で何が行われているのか
 
@@ -164,12 +166,12 @@ export { default as THEME_ID } from "./identifier.js";
 >
 >https://ja.vite.dev/guide/ssr#ssr-externals より引用
 
-「外部化」というのは、Vite の SSR トランスフォームモジュールシステムを使わないことを指すようです。
-`ssr.noExternal` にmuiモジュールを指定すると、**Viteによってモジュールがトランスパイル/バンドルされる** と読み替えることができそうです。
+ここで「外部化」とは、依存関係をViteのSSRモジュールトランスフォームシステム外で処理することを指しています。  
+`ssr.noExternal` にMUIモジュールを指定すると、**Viteがそのモジュールをトランスパイルおよびバンドルする**ようになるということだと認識しています。
 
-`ssr.noExternal` に `["@mui/*"]` を指定した場合のビルドassetを見てみましょう。
-エラーメッセージを読むと、どうやらサーバー向けassetをビルドする際にエラーが発生してそうです。なので `build/server` 配下を調べれば良さそうです。
-spaモードのままだとビルド完了後にサーバー向けassetは削除されてしまうので、確認のために一旦ssrを有効化します。
+例として、 `ssr.noExternal` に `["@mui/*"]` を指定した場合のビルドアセットを確認してみます。
+
+<details><summary>spaモードのままだとビルド完了後にサーバー向けassetは削除されてしまうので、確認のために一旦ssrを有効化します。</summary>
 
 ```diff_typescript
 // react-router.config.ts
@@ -181,13 +183,10 @@ export default {
 } satisfies Config;
 ```
 
-ビルドコマンドを実行した後の `build/server/index.js` ファイルを見てみましょう。今回エラーが発生していた `formatMuiErrorMessage` 関数を探してみます。
-すると `index.js` からexportされていないローカル関数（表現が正しいか分かりませんが）として存在することが分かります。
-`@mui/utils/formatMuiErrorMessage/index.js` からimportするのではなく、Viteによって1つのJSファイルにバンドルされたということみたいです。
+</details>
 
->`webworker` のランタイムなどの場合、SSR のビルドを 1 つの JavaScript ファイルにバンドルしたい場合があります。`ssr.noExternal` を true に設定することで、この動作を有効にできます。
->
->https://ja.vite.dev/guide/ssr#ssr-バンドル より引用
+ビルド時にエラーが発生していたサーバー用アセット ( `build/server/index.js` ) を確認すると、 `@mui/utils/formatMuiErrorMessage` は外部モジュールからimportするのではなくローカル関数として記述されていることがわかります。  
+これは、ViteがMUIモジュールを1つのJavaScriptファイルにバンドルした結果です。
 
 ```build/server/index.js
 ...
@@ -199,22 +198,16 @@ function formatMuiErrorMessage(code, ...args) {
 ...
 ```
 
-muiのGitHubリポジトリを参照してみましたが、やはり `formatMuiErrorMessage` の実装がそのまま `index.js` に移されたようですね。
+この動作は、以下の公式ドキュメントで説明されています。
 
-```packages/mui-utils/src/formatMuiErrorMessage/formatMuiErrorMessage.ts
-export default function formatMuiErrorMessage(code: number, ...args: string[]): string {
-  const url = new URL(`https://mui.com/production-error/?code=${code}`);
-  args.forEach((arg) => url.searchParams.append('args[]', arg));
-  return `Minified MUI error #${code}; visit ${url} for the full message.`;
-}
-```
-
-（https://github.com/mui/material-ui/blob/60106b31d0b4e5e304fdb4d612cc62c1c21a20f6/packages/mui-utils/src/formatMuiErrorMessage/formatMuiErrorMessage.ts#L11-L15 より引用）
+>`webworker` のランタイムなどの場合、SSR のビルドを 1 つの JavaScript ファイルにバンドルしたい場合があります。`ssr.noExternal` を true に設定することで、この動作を有効にできます。
+>
+>[https://ja.vite.dev/guide/ssr#ssr-バンドル](https://ja.vite.dev/guide/ssr#ssr-%E3%83%8F%E3%82%99%E3%83%B3%E3%83%88%E3%82%99%E3%83%AB) より引用
 
 # 最後に
 
-ESM/CJSといったモジュールの仕組みは本当に難しいですね。
-ところで、MUIの次のメジャーバージョンであるv7ではESMサポートが予定されているようです。この問題も解決すると良いですね。
+JavaScriptモジュール（ESM/CJS）の仕組みは非常に奥が深く、簡単に理解できるものではありませんね。
+なお、MUIの次のメジャーバージョン（v7）ではESMの完全サポートが予定されています。この変更により、今回のような問題が解決されることが期待されます。
 
 <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/647946/07f73dbf-776b-ab7d-7f6b-8bc2f47c3b14.png" alt="Material UI v7 (draft) Milestone" width="600" />
 
@@ -229,3 +222,5 @@ https://github.com/mui/material-ui/issues/43980
 https://ja.vite.dev/config/ssr-options#ssr-noexternal
 
 https://zenn.dev/uhyo/articles/typescript-module-option
+
+https://github.com/mui/material-ui/blob/60106b31d0b4e5e304fdb4d612cc62c1c21a20f6/packages/mui-utils/src/formatMuiErrorMessage/formatMuiErrorMessage.ts#L11-L15
