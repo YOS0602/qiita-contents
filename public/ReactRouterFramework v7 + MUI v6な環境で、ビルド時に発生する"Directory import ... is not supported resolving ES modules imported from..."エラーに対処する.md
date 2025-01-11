@@ -3,12 +3,12 @@ title: >-
   ReactRouterFramework v7 + MUI v6な環境で、ビルド時に発生する"Directory import ... is not
   supported resolving ES modules imported from..."エラーに対処する
 tags:
-  - 'react-router'
-  - 'MUI'
-  - 'vite'
+  - react-router
+  - MUI
+  - vite
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-01-11T10:47:41+09:00'
+id: ec90322ae89d3a4c488b
 organization_url_name: null
 slide: false
 ignorePublish: false
