@@ -17,9 +17,9 @@
   "author": "YOS0602 <yoshitaka.t.biz@gmail.com> (https://github.com/YOS0602)",
   "license": "UNLICENSED",
   "volta": {
-    "node": "20.11.0"
+    "node": "22.16.0"
   },
   "devDependencies": {
-    "@qiita/qiita-cli": "^1.6.1"
+    "@qiita/qiita-cli": "^1.6.2"
   }
 }
