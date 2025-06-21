@@ -3,12 +3,12 @@ title: ディレクトリごとにgitconfig設定を分けたい
 tags:
   - Git
   - gitconfig
-private: false
-updated_at: ''
-id: null
+private: true
+updated_at: '2025-06-21T14:17:15+09:00'
+id: 4e4852498e4fa76168d1
 organization_url_name: null
 slide: false
-ignorePublish: true
+ignorePublish: false
 ---
 
 # 背景
