@@ -4,7 +4,7 @@ tags:
   - Mac
   - homebrew
 private: false
-updated_at: '2024-10-01T15:13:45+09:00'
+updated_at: '2025-04-30T12:18:47+09:00'
 id: d723e3f35b7a738ef97e
 organization_url_name: null
 slide: false
@@ -12,8 +12,7 @@ ignorePublish: false
 ---
 # はじめに
 
-開発端末としてMacを新しくした時に、色々とやることをメモしておく。全て自分のため。
-気が向いたらインストールパッケージもうちょっとカテゴリ分けしようかな。
+自分が開発端末としてMacを新しくした際の参考資料として、設定やインストールするツールをメモしておきます。
 
 # 端末設定
 
@@ -255,4 +254,20 @@ cursor --install-extension foxundermoon.shell-format              # shell-format
 
 # zsh設定
 
+## コマンド入力補完
+
+```sh
+brew install zsh-autosuggestions
+```
+
 https://zenn.dev/sprout2000/articles/bd1fac2f3f83bc#3.-zsh-autosuggestions-%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+
+## コマンド終了時に通知音を鳴らせるようにする設定
+
+```sh
+alias beep='for i in {1..2}; do afplay /System/Library/Sounds/Glass.aiff; done'
+```
+
+`npm i;beep` とかでコマンド終了を通知できる。
+
+https://zenn.dev/magicmoment/articles/play-sound-command-20241205

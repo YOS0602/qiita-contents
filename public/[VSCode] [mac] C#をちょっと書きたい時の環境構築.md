@@ -3,7 +3,7 @@ title: '[VSCode] [mac] C#をちょっと書きたい時の環境構築'
 tags:
   - Mac
   - C#
-  - VisualStudioCode
+  - VSCode
 private: false
 updated_at: '2023-01-07T21:31:55+09:00'
 id: fae06fde5b2f0bfb7a20

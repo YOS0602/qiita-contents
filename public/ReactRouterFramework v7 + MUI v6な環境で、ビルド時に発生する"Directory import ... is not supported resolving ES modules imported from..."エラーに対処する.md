@@ -7,7 +7,7 @@ tags:
   - MUI
   - vite
 private: false
-updated_at: '2025-01-11T10:47:41+09:00'
+updated_at: '2025-05-08T18:22:42+09:00'
 id: ec90322ae89d3a4c488b
 organization_url_name: null
 slide: false
@@ -17,6 +17,12 @@ ignorePublish: false
 
 `vite.config.ts` の `ssr.noExternal` に `["@mui/*"]` を追加する。
 詳しくは [こちら](#対処法) へ。
+
+:::note info
+2025/05/08追記
+MUI v7でESMサポートが改善されました。 `ssr.noExternal` に `["@mui/*"]` を追加しなくてもエラーが発生しないようになっていると思います。
+https://mui.com/blog/material-ui-v7-is-here/#improved-esm-support
+:::
 
 # はじめに
 
