@@ -1,13 +1,13 @@
 ---
 title: Storybook の parameters の型定義を拡張して、指定できる型をIDEからサジェストしてもらえるようにする
 tags:
-  - 'storybook'
-  - 'tips'
-  - 'react'
-  - 'TypeScript'
+  - tips
+  - TypeScript
+  - React
+  - storybook
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-08-09T15:46:38+09:00'
+id: 93281cd555b1e76ea4b0
 organization_url_name: null
 slide: false
 ignorePublish: false
