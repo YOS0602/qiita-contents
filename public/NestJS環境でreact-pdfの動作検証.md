@@ -252,3 +252,35 @@ npm run start:dev
 - [TSConfig Reference - Docs on every TSConfig option](https://www.typescriptlang.org/tsconfig/#jsx)
 - [Node.js 22の--experimental-require-moduleで、NestJSからESM Onlyライブラリを使ってみる](https://zenn.dev/ptna/articles/28b20f303a3cfb)
 - [Next.js (Pages Router) で react-pdf を動かしてみた #React - Qiita](https://qiita.com/YOS0602/items/20ccf9473157da50f9b0)
+
+## 追記
+
+### なぜ動くようになったのか？
+
+>### import statements
+>An `import` statement can reference an ES module or a CommonJS module. `import` statements are permitted only in ES modules, but dynamic [import()](https://nodejs.org/docs/latest-v22.x/api/esm.html#import-expressions) expressions are supported in CommonJS for loading ES modules.
+>
+>（途中略）
+>### require
+>The CommonJS module `require` currently only supports loading synchronous ES modules (that is, ES modules that do not use top-level `await` ).
+>
+>[Modules: ECMAScript modules | Node.js v22.18.0 Documentation](https://nodejs.org/docs/latest-v22.x/api/esm.html#interoperability-with-commonjs) より引用
+
+Node.jsのドキュメントによると、ECMAScriptのモジュール仕様は以下のようになっていると記載されています。
+
+- `import` 文（ESMでのみ記述できる）はESMもCJSもどちらも参照することができる
+- CJSの `require` は top-level await を使用していないESMを読み込むことができる
+
+> The node16, node18, node20, and nodenext modes integrate with Node’s native ECMAScript Module support.
+><https://www.typescriptlang.org/tsconfig/#module> より引用
+
+tsconfigで `nodenext` を設定したことにより、ECMAScriptの仕様に従ってモジュールが解決されるようになります。
+そのため、CJSで動いているNestJSからでも、ESMパッケージである `@react-pdf/renderer` を読み込むことができたということだと思います。
+
+:::note info
+トランスパイルされたjsコードを見ると、 `require(ESM)` を行っています👍
+
+```js:PDFDocument.js
+const renderer_1 = require("@react-pdf/renderer");
+```
+:::
