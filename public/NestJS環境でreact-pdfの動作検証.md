@@ -1,14 +1,14 @@
 ---
 title: NestJS環境でreact-pdfを動かす【Node.js v22対応】
 tags:
-  - 'NestJS'
-  - 'Node.js'
-  - 'react-pdf'
-  - 'TypeScript'
-  - 'esm'
+  - Node.js
+  - TypeScript
+  - esm
+  - react-pdf
+  - NestJS
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-08-27T08:39:50+09:00'
+id: 8a6b248c4c457cc917fa
 organization_url_name: null
 slide: false
 ignorePublish: false
