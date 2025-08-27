@@ -4,7 +4,7 @@ tags:
   - Git
   - gitconfig
 private: true
-updated_at: '2025-08-27T08:41:26+09:00'
+updated_at: '2025-08-27T09:28:17+09:00'
 id: 4e4852498e4fa76168d1
 organization_url_name: null
 slide: false
