@@ -284,3 +284,23 @@ tsconfigで `nodenext` を設定したことにより、ECMAScriptの仕様に�
 const renderer_1 = require("@react-pdf/renderer");
 ```
 :::
+
+### Storybook の導入
+
+```bash
+$ npm create storybook@latest
+✔ New to Storybook? › No: Skip onboarding & don't ask again
+✔ What configuration should we install? › Recommended: Component dev, docs, test
+✔ Do you want to manually choose a Storybook project type to install? … yes
+✔ Please choose a project type from the following list: › react
+✔ We were not able to detect the right builder for your project. Please select one: › Vite
+```
+
+こちらのURLでstorybook導入のコミットを参照できます。
+
+https://github.com/YOS0602/react-pdf-with-nest/compare/002d4631fe3af593853dcb676e5e78d62492b5b9...d2633d8599428f7cb261ff1842610df766513da1
+
+### Jest設定
+
+AIいわく、Jestもv28以降はESM対応されているらしいのですが、TypeScript＋Jest＋外部ESMパッケージの組み合わせはトラブルも多いらしく......
+動かせるように設定するのは難しそうでした。時間の都合で諦めましたが、Vitestをテストランナーとして使用するように変更するか、自動テストではない別手法で品質担保することを考えても良いかもしれません。
